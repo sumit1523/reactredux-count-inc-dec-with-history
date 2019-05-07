@@ -27,9 +27,22 @@ class App extends Component {
 
     return (
       <div className="App">
-       <div>Age: <span>{this.props.age}</span></div>
-       <button onClick= {this.props.onAgeUp}>AgeUp</button>
-       <button onClick= {this.props.onAgeDown}>AgeDown</button>
+       <div className="age">Age: <span>{this.props.age}</span></div>
+       <button className="ageUp" onClick= {this.props.onAgeUp}>AgeUp</button>
+       <button className="ageDown" onClick= {this.props.onAgeDown}>AgeDown</button>
+       <hr/>
+       <div>History</div>
+       <div>
+         <ul>
+           {
+             this.props.history.map(el => (
+               <li className = 'historyItem' key = {el.id} onClick={() => this.props.onDeleteItem(el.id)}>
+                 {el.age}
+               </li>
+             ))
+           }
+         </ul>
+       </div>
       </div>
     );
   
@@ -38,16 +51,16 @@ class App extends Component {
 
 const mapStateToPorps = (state) => {
   return{
-    age: state.age
+    age: state.age,
+    history: state.history
   }
 }
 const mapDispachToProps = (dispach) => {
   return {
-    onAgeUp: () => dispach({type:'AGE_UP'}),
-    onAgeDown: () => dispach({type: 'AGE_DOWN'})
+    onAgeUp: () => dispach({type:'AGE_UP', value:1}),
+    onAgeDown: () => dispach({type: 'AGE_DOWN', value:1}),
+    onDeleteItem: (id) => dispach({type: 'DEL_ITEM', key:id})
   }
 }
-
-
 
 export default connect(mapStateToPorps, mapDispachToProps)(App);

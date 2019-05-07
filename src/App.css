@@ -31,3 +31,26 @@
     transform: rotate(360deg);
   }
 }
+
+.age{
+  margin: 10px;
+}
+
+.ageUp, 
+.ageDown{
+  margin: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  outline: 0;
+  background: bisque;
+}
+
+.historyItem{
+  list-style-type: none;
+  border:1px solid #f9e5ad;
+  margin:10px;
+  padding-top:10px;
+  padding-bottom: 10px;
+  background-color: #f7e8bc70;
+}
